@@ -567,8 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b007c02238d8b74ea7cce31ef7b036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  paddleRigidbody: {fileID: 0}
+  speed: 12
+  paddleRigidbody: {fileID: 474611789}
+  bound: 8.5
+  ball: {fileID: 231164332}
 --- !u!50 &474611789
 Rigidbody2D:
   serializedVersion: 4

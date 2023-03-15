@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Paddle
 {
-    public float speed;
-    public Rigidbody2D paddleRigidbody;
-    public float bound;
+    private Vector2 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,36 +14,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleKeyboardInput();
-
-        var position = transform.position;
-        if (position.y >= bound)
-        {
-            position.y = bound;
-        } else if (position.y <= -bound)
-        {
-            position.y = -bound;
-        }
-       
-        transform.position = position;
+        HandleKeyboardInput();  
     }
 
-    void HandleKeyboardInput()
+   private void HandleKeyboardInput()
     {
 
         if (Input.GetKey(KeyCode.W))
         {
-            paddleRigidbody.velocity = Vector2.up * speed;
+           direction = Vector2.up;
         }
 
         else if (Input.GetKey(KeyCode.S))
         {
-            paddleRigidbody.velocity = Vector2.down * speed;
+            direction = Vector2.down;
         }
-
         else
         {
-            paddleRigidbody.velocity = Vector2.up * 0;
+            direction = Vector2.zero;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (direction.sqrMagnitude != 0)
+        {
+            paddleRigidBody.AddForce(direction * this.speed);
         }
     }
 }
