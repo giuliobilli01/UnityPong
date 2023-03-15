@@ -5,12 +5,6 @@ using UnityEngine;
 public class PlayerController : Paddle
 {
     private Vector2 direction;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -19,25 +13,28 @@ public class PlayerController : Paddle
 
    private void HandleKeyboardInput()
     {
+        if (scene.GetIsGameActive())
+        {
 
-        if (Input.GetKey(KeyCode.W))
-        {
-           direction = Vector2.up;
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                direction = Vector2.up;
+            }
 
-        else if (Input.GetKey(KeyCode.S))
-        {
-            direction = Vector2.down;
-        }
-        else
-        {
-            direction = Vector2.zero;
+            else if (Input.GetKey(KeyCode.S))
+            {
+                direction = Vector2.down;
+            }
+            else
+            {
+                direction = Vector2.zero;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (direction.sqrMagnitude != 0)
+        if (direction.sqrMagnitude != 0 && scene.GetIsGameActive())
         {
             paddleRigidBody.AddForce(direction * this.speed);
         }

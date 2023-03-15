@@ -6,9 +6,11 @@ public class Paddle : MonoBehaviour
 {
     protected Rigidbody2D paddleRigidBody;
     public float speed;
-    // Start is called before the first frame update
+    public SceneScript scene;
+    
     void Awake()
     {
+        scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneScript>();
         paddleRigidBody = GetComponent<Rigidbody2D>();
     }
 

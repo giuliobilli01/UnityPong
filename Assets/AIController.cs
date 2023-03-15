@@ -13,28 +13,32 @@ public class AIController : Paddle
 
     private void FixedUpdate()
     {
+        print(scene.GetIsGameActive());
         // If the ball is going on the computer paddle
-        if (ball.velocity.x > 0)
+        if (scene.GetIsGameActive())
         {
+            if (ball.velocity.x > 0)
+            {
 
-            if (ball.position.y > transform.position.y)
-            {
-                paddleRigidBody.AddForce(Vector2.up * this.speed);
+                if (ball.position.y > transform.position.y)
+                {
+                    paddleRigidBody.AddForce(Vector2.up * this.speed);
+                }
+                else if (ball.position.y < transform.position.y)
+                {
+                    paddleRigidBody.AddForce(Vector2.down * this.speed);
+                }
             }
-            else if (ball.position.y < transform.position.y)
+            else
             {
-                paddleRigidBody.AddForce(Vector2.down * this.speed);
-            }
-        }
-        else
-        {
-            if (transform.position.y > 0)
-            {
-                paddleRigidBody.AddForce(Vector2.down * this.speed);
-            }
-            else if (transform.position.y < 0)
-            {
-                paddleRigidBody.AddForce(Vector2.up * this.speed);
+                if (transform.position.y > 0)
+                {
+                    paddleRigidBody.AddForce(Vector2.down * this.speed);
+                }
+                else if (transform.position.y < 0)
+                {
+                    paddleRigidBody.AddForce(Vector2.up * this.speed);
+                }
             }
         }
     }

@@ -5,8 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class SceneScript : MonoBehaviour
 {
+    public GameObject gameOverScreen;
+    protected bool isGameActive=true;
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void ResumeGame()
+    {
+
+    }
+
+    public void SetIsGameActive(bool value)
+    {
+        isGameActive = value;
+    }
+
+    public bool GetIsGameActive()
+    {
+        return isGameActive;
+    }
+
+    
 }

@@ -5,14 +5,15 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public Rigidbody2D ballRigidBody;
-    private Vector2 startSpeed;
     public float extraSpeed;
     public float maxSpeed;
     private int hitCounter=0;
+    public SceneScript scene;
     
     // Start is called before the first frame update
     void Start()
     {
+        scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneScript>();
         Invoke("BallStartDirection", 2);
     }
 
@@ -70,6 +71,9 @@ public class BallController : MonoBehaviour
         ballRigidBody.position = Vector3.zero;
         ballRigidBody.velocity = Vector3.zero;
 
-        BallStartDirection();
+        if (scene.GetIsGameActive())
+        {
+            BallStartDirection();
+        }
     }
 }
