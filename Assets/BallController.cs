@@ -40,11 +40,11 @@ public class BallController : MonoBehaviour
         Vector2 velocity;
         if (rand <= 1)
         {
-            velocity = new Vector2(20, -15);
+            velocity = new Vector2(23, -15);
         }
         else
         {
-            velocity = new Vector2(-20, -15);
+            velocity = new Vector2(-23, -15);
         }
         return velocity;
     }

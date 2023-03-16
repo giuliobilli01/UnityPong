@@ -14,7 +14,7 @@ public class SceneScript : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
+        SceneManager.LoadScene(2);
     }
 
     public void PauseGame()
